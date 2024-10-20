@@ -29,18 +29,16 @@ function initializeCustomGithubList() {
         fileList.forEach(file => {
           const listItem = document.createElement('li');
 
+          // Extract filename from path (ignoring folders)
+          const fileName = file.path.split('/').pop(); 
+
           // Create a "Load" button
           const loadButton = document.createElement('button');
           loadButton.textContent = 'Load';
           loadButton.addEventListener('click', () => {
             const inputCustomScript = document.getElementById('inputCustomScript');
-            // Extract filename from path (ignoring folders)
-            const fileName = file.path.split('/').pop(); 
-            inputCustomScript.value = "github " + fileName;
+            inputCustomScript.value = "github " + fileName; 
           });
-
-          // Extract filename from path (ignoring folders)
-          const fileName = file.path.split('/').pop();
 
           // Add the filename and the "Load" button to the list item
           listItem.innerHTML = fileName + " ";
