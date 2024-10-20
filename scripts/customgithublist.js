@@ -34,8 +34,9 @@ function initializeCustomGithubList() {
           loadButton.textContent = 'Load';
           loadButton.addEventListener('click', () => {
             const inputCustomScript = document.getElementById('inputCustomScript');
-            // Use the filename only, ignoring folders
-            inputCustomScript.value = "github " + file.path.split('/').pop(); 
+            // Extract filename from path (ignoring folders)
+            const fileName = file.path.split('/').pop(); 
+            inputCustomScript.value = "github " + fileName;
           });
 
           // Extract filename from path (ignoring folders)
