@@ -32,7 +32,7 @@ function generateSolanaMarketCapValues() {
     marketCapArea.innerHTML = ''; // Clear previous content
 
     // Solana supply (as of now, it is capped at around 500 million)
-    const solanaSupply = 500000000; // Modify this value based on current supply if necessary
+    const solanaSupply = 469925023; // Modify this value based on current supply if necessary
 
     // Calculate and display market cap at increments of $25
     for (let price = 0; price <= 1000; price += 25) {
