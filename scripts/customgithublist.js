@@ -27,18 +27,13 @@ function initializeCustomGithubList() {
         const fileList = data.tree.filter(item => item.type === 'blob' && item.path.endsWith('.js'));
         const listElement = document.createElement('ul');
         fileList.forEach(file => {
-          const listItem = document.createElement('li');
+          // ... (create listItem and loadButton) ...
 
-          // Create a "Load" button
-          const loadButton = document.createElement('button');
-          loadButton.textContent = 'Load';
-          loadButton.addEventListener('click', () => {
-            const inputCustomScript = document.getElementById('inputCustomScript');
-            inputCustomScript.value = "github " + file.path;
-          });
+          // Extract filename from path (ignoring folders)
+          const fileName = file.path.split('/').pop(); 
 
-          // Add the file path and the "Load" button to the list item
-          listItem.innerHTML = file.path + " ";
+          // Add the filename and the "Load" button to the list item
+          listItem.innerHTML = fileName + " "; 
           listItem.appendChild(loadButton);
 
           listElement.appendChild(listItem);
