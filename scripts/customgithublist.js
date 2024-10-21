@@ -21,7 +21,7 @@ function initializeCustomGithubList() {
     container.appendChild(customGithubListArea);
 
     // Fetch the GitHub tree data
-    fetch('https://api.github.com/repos/dogelana/svm/git/trees/94768a62c0e445803e9ba8c0cf33a4397a16551a?recursive=1')
+    fetch('https://api.github.com/repos/dogelana/svm/git/trees/0e49cd5a280dda888dc2a0d9c98844f4bdb2baec?recursive=1')
       .then(response => response.json())
       .then(data => {
         const fileList = data.tree.filter(item => item.type === 'blob' && item.path.endsWith('.js'));
