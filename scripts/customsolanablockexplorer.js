@@ -19,7 +19,7 @@ function initializeSolanaBlockExplorer() {
     container.appendChild(solanaBlockExplorerArea);
 
     // Fetch and display recent Solana blocks
-    fetch('https://api.mainnet-beta.solana.com', {
+    fetch('https://smart-fittest-valley.solana-mainnet.quiknode.pro/3d2117f57930154544c7eddf4bd5d4f6776048c3', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -33,7 +33,7 @@ function initializeSolanaBlockExplorer() {
       .then(response => response.json())
       .then(data => {
         const blockhash = data.result.value.blockhash;
-        fetch(`https://api.mainnet-beta.solana.com`, {
+        fetch(`https://smart-fittest-valley.solana-mainnet.quiknode.pro/3d2117f57930154544c7eddf4bd5d4f6776048c3`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
