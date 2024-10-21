@@ -19,8 +19,8 @@ function initializeSolanaBlockExplorer() {
 
     container.appendChild(titleElement);
     container.appendChild(solanaBlockExplorerArea);
-    
-    // Fetch the current block and recent blockhash using QuickNode
+
+    // Fetch recent blockhash using QuickNode
     fetch('https://smart-fittest-valley.solana-mainnet.quiknode.pro/3d2117f57930154544c7eddf4bd5d4f6776048c3/', {
         method: 'POST',
         headers: {
@@ -29,44 +29,22 @@ function initializeSolanaBlockExplorer() {
         body: JSON.stringify({
           "jsonrpc": "2.0",
           "id": 1,
-          "method": "getFirstAvailableBlock"
+          "method": "getRecentBlockhash"
         })
       })
       .then(response => response.json())
       .then(data => {
-        const firstAvailableBlock = data.result;
+        const recentBlockhash = data.result.value.blockhash;
 
-        // Fetch recent blockhash
-        fetch('https://smart-fittest-valley.solana-mainnet.quiknode.pro/3d2117f57930154544c7eddf4bd5d4f6776048c3/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              "jsonrpc": "2.0",
-              "id": 1,
-              "method": "getRecentBlockhash"
-            })
-          })
-          .then(response => response.json())
-          .then(blockhashData => {
-            const recentBlockhash = blockhashData.result.value.blockhash;
-
-            // Display block information
-            const blockInfo = `
-              <h2>First Available Block: ${firstAvailableBlock}</h2>
-              <p>Recent Blockhash: ${recentBlockhash}</p>
-            `;
-            solanaBlockExplorerArea.innerHTML = blockInfo;
-          })
-          .catch(error => {
-            console.error('Error fetching blockhash data:', error);
-            solanaBlockExplorerArea.innerHTML = "<p>Error loading blockhash data.</p>";
-          });
+        // Display blockhash information
+        const blockInfo = `
+          <p>Recent Blockhash: ${recentBlockhash}</p>
+        `;
+        solanaBlockExplorerArea.innerHTML = blockInfo;
       })
       .catch(error => {
-        console.error('Error fetching block data:', error);
-        solanaBlockExplorerArea.innerHTML = "<p>Error loading block data.</p>";
+        console.error('Error fetching blockhash data:', error);
+        solanaBlockExplorerArea.innerHTML = "<p>Error loading blockhash data.</p>";
       });
   }
 }
