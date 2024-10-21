@@ -1,8 +1,25 @@
 // solana_block_explorer.js
 
 function initializeSolanaBlockExplorer() {
-  // ... (rest of the function remains the same) ...
+  let solanaBlockExplorerArea = document.getElementById('solanaBlockExplorerArea');
 
+  if (!solanaBlockExplorerArea) {
+    solanaBlockExplorerArea = document.createElement('div');
+    solanaBlockExplorerArea.id = 'solanaBlockExplorerArea';
+
+    const titleElement = document.createElement('h3');
+    titleElement.textContent = 'Solana Block Explorer';
+
+    let container = document.getElementById('solanaBlockExplorerContent') || document.getElementById('customContent');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'solanaBlockExplorerContent';
+      document.body.appendChild(container);
+    }
+
+    container.appendChild(titleElement);
+    container.appendChild(solanaBlockExplorerArea);
+    
     // Fetch the current block and recent blockhash using QuickNode
     fetch('https://smart-fittest-valley.solana-mainnet.quiknode.pro/3d2117f57930154544c7eddf4bd5d4f6776048c3/', {
         method: 'POST',
