@@ -22,7 +22,7 @@ function initializeMiniBrowser() {
     miniBrowserArea.innerHTML = `
       <input type="text" id="urlInput" placeholder="Enter URL">
       <button id="loadUrlButton">Load</button>
-      <iframe id="browserIframe" width="100%" height="200px"></iframe> 
+      <iframe id="browserIframe" width="100%" height="500px"></iframe> 
     `;
 
     // Add event listener to the button
